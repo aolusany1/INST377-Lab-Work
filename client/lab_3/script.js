@@ -44,7 +44,7 @@ function moveToPrevSlide() {
   if (slidePosition === 0) {
     slidePosition = totalSlides - 1;
   } else {
-     slidePosition -= 1;
+    slidePosition -= 1;
   }
   updateSlidePosition();
 }
@@ -60,6 +60,11 @@ document
     console.log("clicked next"); // let's tell the client console we made it to this point in the script
     moveToNextSlide(); // call the function above to handle this
   });
-
+document
+  .querySelector(".prev")
+  .addEventListener("click", () => {
+    console.log("clicked prev");
+    moveToPrevSlide();
+  })
 // Paying close attention to the above queryselector, write one that fires
 // when you want a "prev" slide
