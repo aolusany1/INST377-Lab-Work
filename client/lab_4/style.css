@@ -8,7 +8,7 @@
 */
 
 html {
-  background-color: #8d1f1f;
+  background-color: #333b5c;
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;
@@ -31,7 +31,7 @@ body {
     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background-color: rgb(128, 12, 12);
+  background-color: rgb(34, 25, 121);
 }
 
 a {
@@ -47,7 +47,7 @@ h3 {
 }
 
 form {
-  accent-color: hsla(83, 95%, 46%, 0.482);
+  accent-color: hsla(348, 80%, 52%, 0.482);
 }
 
 /*
@@ -126,14 +126,14 @@ form {
 }
 
 .left_section {
-  background-color: rgba(202, 17, 63, 0.932);
+  background-color: rgba(219, 81, 116, 0.932);
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
 }
 
 .right_section {
-  background-color: rgba(7, 230, 37, 0.897);
+  background-color: rgba(208, 230, 7, 0.897);
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
@@ -182,7 +182,7 @@ form {
 }
 
 .subtitle {
-  color: rgba(75, 17, 17, 0.932);
+  color: rgba(48, 209, 214, 0.932);
   margin: 0px;
   margin-bottom: 5px;
 }
