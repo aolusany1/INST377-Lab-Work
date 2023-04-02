@@ -45,9 +45,13 @@ function getRandomIntInclusive(min, max) {
     const filterButton = document.querySelector("#filter");
     const loadDataButton = document.querySelector("#data_load");
     const generateListButton = document.querySelector("#generate");
-  
+    const textField = document.querySelector('#resto')
+
     const loadAnimation = document.querySelector("#data_load_animation");
     loadAnimation.style.display = "none";
+    generateListButton.classList.add('hidden')
+
+    let storedList = [];
     let currentList = []; // this is "scoped" to the main event function
   
     /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
@@ -61,9 +65,12 @@ function getRandomIntInclusive(min, max) {
       );
   
       // This changes the response from the GET into data we can use - an "object"
-      currentList = await results.json();
+      storedList = await results.json();
+      if(storedList.length > 0) {
+        generateListButton.classList.remove('hidden');
+    }
       loadAnimation.style.display = "none";
-      console.table(currentList);
+      console.table(storedList);
     });
   
     filterButton.addEventListener("click", (event) => {
@@ -80,10 +87,17 @@ function getRandomIntInclusive(min, max) {
   
     generateListButton.addEventListener("click", (event) => {
       console.log("generate new list");
-      const restaurantsList = cutRestaurantList(currentList);
-      console.log(restaurantsList);
-      injectHTML(restaurantsList);
+      currentList = cutRestaurantList(storedList);
+      console.log(currentList);
+      injectHTML(currentList);
     });
+
+    textField.addEventListener('input', (event) =>{
+        console.log('input', event.target.value);
+        const newList = filterList(currentList, event.target.value);
+        console.log(newList);
+        injectHTML(newList);
+    })
   }
   
   document.addEventListener("DOMContentLoaded", async () => mainEvent()); // the async keyword means we can make API requests
