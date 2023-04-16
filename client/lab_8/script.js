@@ -104,7 +104,7 @@ async function mainEvent() {
     localStorage.setItem("storedData", JSON.stringify(storedList));
     parsedData = storedList;
 
-    if(storedList?.length > 0){
+    if(parsedData?.length > 0){
       generateListButton.classList.remove("hidden");
     }
 
