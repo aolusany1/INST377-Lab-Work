@@ -1,0 +1,29 @@
+import requests
+import pandas as pd
+
+# Step 1: Access the data from the URL
+url = "https://data.princegeorgescountymd.gov/resource/sphi-rwax.json"
+response = requests.get(url)
+
+# Step 2: Convert the response to JSON format
+data = response.json()
+
+# Step 3: Extract the relevant data and store it in a list of dictionaries
+rows = []
+for item in data:
+    row = {
+        "market_name": item["market_name"],
+        "street_address": item["street_address"],
+        "city": item["city"],
+        "state": item["state"],
+        "zip": item["zip"],
+        "location": f'({item["location"]["latitude"]}, {item["location"]["longitude"]})',
+        "tokens": item["tokens"]
+    }
+    rows.append(row)
+
+# Step 4: Create a dataframe from the list of dictionaries
+df = pd.DataFrame(rows)
+
+# Step 5: Save the dataframe to a CSV file
+df.to_csv("farmers_market.csv", index=False)
